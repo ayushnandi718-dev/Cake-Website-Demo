@@ -1,5 +1,6 @@
 /* =============== CHECKOUT PAGE LOGIC =============== */
 const STORAGE_KEY = 'delizia-cart';
+const ORDERS_KEY = 'delizia-orders';
 const DELIVERY_FEE = 4.99;
 const TAX_RATE = 0.05;
 
@@ -14,6 +15,19 @@ function loadCart() {
 
 function saveCart() {
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)); } catch {}
+}
+
+function loadOrders() {
+  try {
+    const stored = localStorage.getItem(ORDERS_KEY);
+    return stored ? JSON.parse(stored) : [];
+  } catch { return []; }
+}
+
+function saveOrder(order) {
+  const orders = loadOrders();
+  orders.unshift(order);
+  try { localStorage.setItem(ORDERS_KEY, JSON.stringify(orders)); } catch {}
 }
 
 function getSubtotal() { return cart.reduce((s, i) => s + i.price * i.qty, 0); }
@@ -216,6 +230,20 @@ document.addEventListener('DOMContentLoaded', () => {
       );
       const waPhone = phone.replace(/[^0-9]/g, '');
       document.getElementById('co-whatsapp-btn').href = `https://wa.me/${waPhone}?text=${waMsg}`;
+
+      /* ---- Save order to history ---- */
+      saveOrder({
+        id: orderId,
+        date: new Date().toISOString(),
+        customer: { fname, lname, email, phone },
+        delivery: { date, time, address, notes },
+        items: cart.map(i => ({ name: i.name, price: i.price, qty: i.qty, img: i.img })),
+        subtotal: getSubtotal(),
+        tax: getTax(),
+        deliveryFee: DELIVERY_FEE,
+        total: parseFloat(total),
+        status: 'Confirmed'
+      });
 
       cart = [];
       saveCart();

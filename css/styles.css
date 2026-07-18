@@ -68,6 +68,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; color: var
 .nav__cart-btn:hover { background: var(--rose); color: #fff; }
 .cart__badge { position: absolute; top: -5px; right: -5px; background: var(--text); color: #fff; font-size: .62rem; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; opacity: 0; transform: scale(0); transition: var(--transition); }
 .cart__badge.show { opacity: 1; transform: scale(1); }
+.nav__orders-btn { width: 42px; height: 42px; border-radius: var(--radius-sm); background: var(--rose-light); color: var(--rose-dark); font-size: 1.2rem; display: grid; place-items: center; transition: var(--transition); text-decoration: none; flex-shrink: 0; }
+.nav__orders-btn:hover { background: var(--rose); color: #fff; }
 .nav__toggle { display: none; font-size: 1.4rem; color: var(--text); cursor: pointer; padding: .2rem; }
 .nav__close { display: none; }
 

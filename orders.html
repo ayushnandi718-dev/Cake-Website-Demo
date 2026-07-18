@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders | Delizia Bakery</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/checkout.css">
+  <link rel="stylesheet" href="css/orders.css">
+</head>
+<body class="checkout-body">
+
+  <!-- HEADER -->
+  <header class="checkout-header">
+    <a href="index.html" class="nav__logo">
+      <i class="ri-cake-3-line" aria-hidden="true"></i> DELIZIA
+    </a>
+    <a href="index.html" class="checkout-header__back">
+      <i class="ri-arrow-left-line"></i> Back to Shop
+    </a>
+  </header>
+
+  <main class="orders-main container">
+    <h1 class="orders-title"><i class="ri-file-list-3-line"></i> My Orders</h1>
+
+    <!-- Empty state -->
+    <div class="orders-empty" id="orders-empty" style="display:none">
+      <i class="ri-shopping-bag-3-line"></i>
+      <h2>No orders yet</h2>
+      <p>When you place an order, it will appear here.</p>
+      <a href="index.html" class="btn btn-primary"><i class="ri-cake-3-line"></i> Browse Cakes</a>
+    </div>
+
+    <!-- Order cards -->
+    <div class="orders-list" id="orders-list"></div>
+
+    <!-- Order detail modal -->
+    <div class="order-detail-overlay" id="order-detail-overlay" style="display:none">
+      <div class="order-detail-panel">
+        <button class="order-detail-close" id="order-detail-close"><i class="ri-close-line"></i></button>
+        <div id="order-detail-content"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i class="ri-checkbox-circle-line" aria-hidden="true"></i>
+    <span id="toast-msg"></span>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+  <script src="js/orders.js"></script>
+</body>
+</html>
