@@ -642,43 +642,33 @@ document.getElementById('order-form').addEventListener('submit', function (e) {
 });
 
 /* =============== SWIPERS =============== */
-window.addEventListener('load', () => {
-  try {
-    new Swiper('.hero__swiper', {
-      loop: true,
-      speed: 800,
-      effect: 'creative',
-      creativeEffect: {
-        prev: { translate: ['-100%', 0, -300], rotate: [0, 0, -12], opacity: .5, scale: .8 },
-        next: { translate: ['100%',  0, -300], rotate: [0, 0,  12], opacity: .5, scale: .8 },
-      },
-      autoplay: { delay: 3000, disableOnInteraction: false },
-    });
-  } catch (e) { console.warn('Hero swiper init failed:', e); }
+new Swiper('.hero__swiper', {
+  loop: true,
+  speed: 800,
+  effect: 'creative',
+  creativeEffect: {
+    prev: { translate: ['-100%', 0, -300], rotate: [0, 0, -12], opacity: .5, scale: .8 },
+    next: { translate: ['100%',  0, -300], rotate: [0, 0,  12], opacity: .5, scale: .8 },
+  },
+  autoplay: { delay: 3000, disableOnInteraction: false },
+});
 
-  try {
-    new Swiper('.newcakes__swiper', {
-      loop: true,
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 1.2,
-      spaceBetween: 16,
-      speed: 600,
-      effect: 'creative',
-      creativeEffect: {
-        limitProgress: 2,
-        prev: { translate: ['-35%', 0, 0], scale: .85 },
-        next: { translate: ['35%', 0, 0], scale: .85 },
-      },
-      pagination:  { el: '.newcakes__swiper .swiper-pagination', clickable: true },
-      navigation:  { nextEl: '.newcakes__swiper .swiper-button-next', prevEl: '.newcakes__swiper .swiper-button-prev' },
-      autoplay:    { delay: 3200, disableOnInteraction: false },
-      breakpoints: {
-        640:  { slidesPerView: 2.2, spaceBetween: 20 },
-        1024: { slidesPerView: 3, spaceBetween: 24 },
-      },
-    });
-  } catch (e) { console.warn('Newcakes swiper init failed:', e); }
+new Swiper('.newcakes__swiper', {
+  loop: true,
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: 'auto',
+  spaceBetween: 24,
+  speed: 700,
+  effect: 'creative',
+  creativeEffect: {
+    limitProgress: 2,
+    prev: { translate: ['-30%', 0, 0], scale: .65 },
+    next: { translate: ['30%',  0, 0], scale: .65 },
+  },
+  pagination:  { el: '.swiper-pagination', clickable: true },
+  navigation:  { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+  autoplay:    { delay: 3200, disableOnInteraction: false },
 });
 
 /* =============== INIT =============== */
