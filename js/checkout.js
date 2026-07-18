@@ -220,6 +220,125 @@ document.addEventListener('DOMContentLoaded', () => {
       cart = [];
       saveCart();
       goToStep(4);
+
+      /* ---- PDF Receipt ---- */
+      document.getElementById('co-download-receipt').addEventListener('click', () => {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        const pageW = doc.internal.pageSize.getWidth();
+
+        /* Header */
+        doc.setFillColor(220, 50, 50);
+        doc.rect(0, 0, pageW, 40, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(22);
+        doc.setFont('helvetica', 'bold');
+        doc.text('DELIZIA BAKERY', 14, 18);
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        doc.text('Handcrafted Custom Cakes', 14, 26);
+        doc.text('www.delizia-bakery.com', 14, 33);
+
+        /* Receipt title */
+        doc.setTextColor(220, 50, 50);
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.text('PAYMENT RECEIPT', pageW / 2, 52, { align: 'center' });
+
+        /* Order info */
+        doc.setTextColor(50, 50, 50);
+        doc.setFontSize(10);
+        doc.setFont('helvetica', 'normal');
+        const infoY = 62;
+        doc.text(`Order ID: #${orderId}`, 14, infoY);
+        doc.text(`Date: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`, 14, infoY + 6);
+        doc.text(`Status: Confirmed`, pageW - 14, infoY, { align: 'right' });
+
+        /* Divider */
+        doc.setDrawColor(200, 200, 200);
+        doc.line(14, infoY + 12, pageW - 14, infoY + 12);
+
+        /* Customer details */
+        const custY = infoY + 20;
+        doc.setFont('helvetica', 'bold');
+        doc.text('Customer Details', 14, custY);
+        doc.setFont('helvetica', 'normal');
+        doc.text(`Name: ${fname} ${lname}`, 14, custY + 7);
+        doc.text(`Email: ${email}`, 14, custY + 13);
+        doc.text(`Phone: ${phone}`, 14, custY + 19);
+
+        /* Delivery details */
+        doc.setFont('helvetica', 'bold');
+        doc.text('Delivery Details', pageW / 2 + 10, custY);
+        doc.setFont('helvetica', 'normal');
+        doc.text(`Date: ${date}`, pageW / 2 + 10, custY + 7);
+        doc.text(`Time: ${time}`, pageW / 2 + 10, custY + 13);
+        doc.text(`Address: ${address}`, pageW / 2 + 10, custY + 19);
+        if (notes) doc.text(`Notes: ${notes}`, pageW / 2 + 10, custY + 25);
+
+        /* Divider */
+        doc.line(14, custY + 30, pageW - 14, custY + 30);
+
+        /* Items table header */
+        let tableY = custY + 38;
+        doc.setFillColor(245, 245, 245);
+        doc.rect(14, tableY - 5, pageW - 28, 8, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(9);
+        doc.text('Item', 16, tableY);
+        doc.text('Qty', 120, tableY);
+        doc.text('Price', 140, tableY);
+        doc.text('Total', pageW - 16, tableY, { align: 'right' });
+
+        /* Items */
+        doc.setFont('helvetica', 'normal');
+        tableY += 10;
+        cart.forEach(item => {
+          doc.text(item.name, 16, tableY);
+          doc.text(`x${item.qty}`, 120, tableY);
+          doc.text(`$${item.price.toFixed(2)}`, 140, tableY);
+          doc.text(`$${(item.price * item.qty).toFixed(2)}`, pageW - 16, tableY, { align: 'right' });
+          tableY += 7;
+        });
+
+        /* Divider */
+        tableY += 3;
+        doc.setDrawColor(200, 200, 200);
+        doc.line(14, tableY, pageW - 14, tableY);
+        tableY += 8;
+
+        /* Totals */
+        doc.setFontSize(10);
+        const totalsX = 130;
+        doc.text('Subtotal:', totalsX, tableY);
+        doc.text(`$${getSubtotal().toFixed(2)}`, pageW - 16, tableY, { align: 'right' });
+        tableY += 7;
+        doc.text('Tax (5%):', totalsX, tableY);
+        doc.text(`$${getTax().toFixed(2)}`, pageW - 16, tableY, { align: 'right' });
+        tableY += 7;
+        doc.text('Delivery:', totalsX, tableY);
+        doc.text(`$${DELIVERY_FEE.toFixed(2)}`, pageW - 16, tableY, { align: 'right' });
+        tableY += 10;
+
+        /* Grand total */
+        doc.setFillColor(255, 240, 240);
+        doc.rect(120, tableY - 6, pageW - 134, 10, 'F');
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(12);
+        doc.setTextColor(220, 50, 50);
+        doc.text('GRAND TOTAL:', totalsX, tableY);
+        doc.text(`$${total}`, pageW - 16, tableY, { align: 'right' });
+
+        /* Footer */
+        doc.setTextColor(150, 150, 150);
+        doc.setFontSize(8);
+        doc.setFont('helvetica', 'normal');
+        doc.text('This is a computer-generated receipt. No signature required.', pageW / 2, 280, { align: 'center' });
+        doc.text('Thank you for ordering from Delizia Bakery!', pageW / 2, 285, { align: 'center' });
+
+        doc.save(`Delizia-Receipt-${orderId}.pdf`);
+        showToast('Receipt downloaded!');
+      });
     }, 2000);
   });
 });

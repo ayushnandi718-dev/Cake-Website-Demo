@@ -70,3 +70,5 @@
 .co-success__contact-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: .85rem; text-align: center; }
 .co-success__contact-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
 .co-success__contact-btns .btn { flex: 1; justify-content: center; min-width: 150px; }
+.co-receipt-btn { width: 100%; justify-content: center; font-size: .9rem; padding: .85rem; margin-top: .5rem; border: 2px dashed var(--rose); color: var(--rose); background: var(--rose-pale); }
+.co-receipt-btn:hover { background: var(--rose); color: #fff; border-style: solid; }

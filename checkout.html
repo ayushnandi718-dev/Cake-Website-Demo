@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/checkout.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
 </head>
 <body class="checkout-body">
 
@@ -189,7 +190,10 @@
           </a>
         </div>
       </div>
-      <a href="index.html" class="btn btn-primary" style="margin-top:1.5rem"><i class="ri-home-line"></i> Continue Shopping</a>
+      <button class="btn btn-outline co-receipt-btn" id="co-download-receipt">
+        <i class="ri-file-download-line"></i> Download Payment Receipt (PDF)
+      </button>
+      <a href="index.html" class="btn btn-primary" style="margin-top:1rem"><i class="ri-home-line"></i> Continue Shopping</a>
     </div>
 
   </main>
