@@ -657,18 +657,22 @@ new Swiper('.newcakes__swiper', {
   loop: true,
   grabCursor: true,
   centeredSlides: true,
-  slidesPerView: 'auto',
-  spaceBetween: 24,
-  speed: 700,
+  slidesPerView: 1.5,
+  spaceBetween: 20,
+  speed: 600,
   effect: 'creative',
   creativeEffect: {
-    limitProgress: 2,
-    prev: { translate: ['-30%', 0, 0], scale: .65 },
-    next: { translate: ['30%',  0, 0], scale: .65 },
+    limitProgress: 3,
+    prev: { translate: ['-65%', 0, -100], scale: .85, opacity: .7 },
+    next: { translate: ['65%', 0, -100], scale: .85, opacity: .7 },
   },
-  pagination:  { el: '.swiper-pagination', clickable: true },
-  navigation:  { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+  pagination:  { el: '.newcakes__swiper .swiper-pagination', clickable: true },
+  navigation:  { nextEl: '.newcakes__swiper .swiper-button-next', prevEl: '.newcakes__swiper .swiper-button-prev' },
   autoplay:    { delay: 3200, disableOnInteraction: false },
+  breakpoints: {
+    640:  { slidesPerView: 2, spaceBetween: 24 },
+    1024: { slidesPerView: 2.5, spaceBetween: 32 },
+  },
 });
 
 /* =============== INIT =============== */
