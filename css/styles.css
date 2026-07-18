@@ -198,6 +198,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; color: var
 .newcakes .section__title { color: #fff; }
 .newcakes__container { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
 .newcakes__desc { color: hsl(38,30%,78%); line-height: 1.75; margin-bottom: 2rem; font-size: .93rem; }
+.newcakes__box { position: relative; overflow: hidden; border-radius: var(--radius); }
 .newcakes__swiper { width: 100%; padding-bottom: 3.5rem !important; }
 .newcakes__slide { text-align: center; }
 .newcakes__cake-wrap { display: inline-block; border-radius: var(--radius); background: hsla(350,50%,60%,.12); padding: 1.5rem; transition: var(--transition); }
