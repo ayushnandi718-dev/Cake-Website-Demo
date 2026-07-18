@@ -161,12 +161,61 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('co-order-id').textContent = `#${orderId}`;
 
       const fname = document.getElementById('co-fname').value.trim();
+      const lname = document.getElementById('co-lname').value.trim();
+      const email = document.getElementById('co-email').value.trim();
+      const phone = document.getElementById('co-phone').value.trim();
+      const address = document.getElementById('co-address').value.trim();
       const date = document.getElementById('co-date').value;
+      const time = document.getElementById('co-time').value || 'Any time';
+      const notes = document.getElementById('co-notes').value.trim();
+
+      const itemLines = cart.map(i => `  - ${i.name} x${i.qty} = $${(i.price * i.qty).toFixed(2)}`).join('\n');
+      const total = getTotal().toFixed(2);
+
       document.getElementById('co-success-summary').innerHTML = `
-        <div class="co-success__detail"><i class="ri-user-line"></i> ${fname}</div>
-        <div class="co-success__detail"><i class="ri-calendar-line"></i> Delivery: ${date}</div>
-        <div class="co-success__detail"><i class="ri-money-dollar-circle-line"></i> Total: $${getTotal().toFixed(2)}</div>
+        <div class="co-success__detail"><i class="ri-user-line"></i> ${fname} ${lname}</div>
+        <div class="co-success__detail"><i class="ri-mail-line"></i> ${email}</div>
+        <div class="co-success__detail"><i class="ri-phone-line"></i> ${phone}</div>
+        <div class="co-success__detail"><i class="ri-calendar-line"></i> Delivery: ${date} (${time})</div>
+        <div class="co-success__detail"><i class="ri-map-pin-line"></i> ${address}</div>
+        <div class="co-success__detail"><i class="ri-money-dollar-circle-line"></i> Total: $${total}</div>
       `;
+
+      /* ---- Email (mailto → Gmail) ---- */
+      const emailSubject = encodeURIComponent(`Order Confirmation #${orderId} — Delizia Bakery`);
+      const emailBody = encodeURIComponent(
+        `Hi ${fname},\n\n` +
+        `Thank you for your order at Delizia Bakery!\n\n` +
+        `Order ID: #${orderId}\n` +
+        `Name: ${fname} ${lname}\n` +
+        `Email: ${email}\n` +
+        `Phone: ${phone}\n` +
+        `Delivery: ${date} (${time})\n` +
+        `Address: ${address}\n` +
+        (notes ? `Notes: ${notes}\n` : '') +
+        `\nOrder Items:\n${itemLines}\n\n` +
+        `Subtotal: $${getSubtotal().toFixed(2)}\n` +
+        `Tax (5%): $${getTax().toFixed(2)}\n` +
+        `Delivery: $${DELIVERY_FEE.toFixed(2)}\n` +
+        `Grand Total: $${total}\n\n` +
+        `We'll contact you within 2 hours to confirm.\n\n` +
+        `— Delizia Bakery`
+      );
+      document.getElementById('co-email-btn').href = `mailto:${email}?subject=${emailSubject}&body=${emailBody}`;
+
+      /* ---- WhatsApp ---- */
+      const waMsg = encodeURIComponent(
+        `🎂 *Order Confirmation #${orderId}*\n\n` +
+        `Hi ${fname}, thank you for ordering from Delizia Bakery!\n\n` +
+        `📋 *Order Details:*\n${cart.map(i => `• ${i.name} x${i.qty} — $${(i.price * i.qty).toFixed(2)}`).join('\n')}\n\n` +
+        `💰 *Total: $${total}*\n` +
+        `📅 Delivery: ${date} (${time})\n` +
+        `📍 Address: ${address}\n` +
+        (notes ? `📝 Notes: ${notes}\n` : '') +
+        `\nWe'll confirm your order shortly! 🎉`
+      );
+      const waPhone = phone.replace(/[^0-9]/g, '');
+      document.getElementById('co-whatsapp-btn').href = `https://wa.me/${waPhone}?text=${waMsg}`;
 
       cart = [];
       saveCart();

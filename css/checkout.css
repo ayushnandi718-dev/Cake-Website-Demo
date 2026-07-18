@@ -63,6 +63,10 @@
 .co-success__icon { font-size: 4rem; margin-bottom: 1rem; animation: bounceIn .6s; display: block; }
 .co-success__title { font-family: var(--font-display); font-size: 2rem; color: var(--text); margin-bottom: .6rem; }
 .co-success__msg { font-size: .92rem; color: var(--text-mid); line-height: 1.7; margin-bottom: 1.5rem; }
-.co-success__summary { background: var(--rose-pale); border-radius: var(--radius-sm); padding: 1rem 1.2rem; margin-bottom: 2rem; text-align: left; display: flex; flex-direction: column; gap: .4rem; }
+.co-success__summary { background: var(--rose-pale); border-radius: var(--radius-sm); padding: 1rem 1.2rem; margin-bottom: 1.5rem; text-align: left; display: flex; flex-direction: column; gap: .4rem; }
 .co-success__detail { display: flex; align-items: center; gap: .5rem; font-size: .86rem; color: var(--text); }
 .co-success__detail i { color: var(--rose); flex-shrink: 0; }
+.co-success__contact { background: var(--white); border: 1.5px solid var(--cream-dark); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 1.5rem; }
+.co-success__contact-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: .85rem; text-align: center; }
+.co-success__contact-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+.co-success__contact-btns .btn { flex: 1; justify-content: center; min-width: 150px; }
