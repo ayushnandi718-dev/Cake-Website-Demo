@@ -198,27 +198,24 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; color: var
 .newcakes .section__title { color: #fff; }
 .newcakes__container { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; }
 .newcakes__desc { color: hsl(38,30%,78%); line-height: 1.75; margin-bottom: 2rem; font-size: .93rem; }
-.newcakes__swiper { width: 100%; padding-bottom: 3.5rem !important; overflow: visible; }
-.newcakes__slide { text-align: center; transition: transform .6s cubic-bezier(.22,1,.36,1); }
-.newcakes__cake-wrap { display: inline-block; border-radius: var(--radius); background: hsla(350,50%,60%,.12); padding: 1.5rem; transition: all .6s cubic-bezier(.22,1,.36,1); }
-.newcakes__swiper .swiper-slide-active .newcakes__cake-wrap { background: hsla(350,65%,58%,.22); transform: scale(1.08); box-shadow: 0 12px 40px hsla(350,50%,40%,.25); }
-.newcakes__swiper .swiper-slide-prev .newcakes__cake-wrap,
-.newcakes__swiper .swiper-slide-next .newcakes__cake-wrap { opacity: .85; }
-.newcakes__cake { width: 150px; height: 150px; object-fit: contain; margin-inline: auto; transition: transform .6s cubic-bezier(.22,1,.36,1); }
-.newcakes__swiper .swiper-slide-active .newcakes__cake { transform: scale(1.05); }
-.newcakes__name { margin-top: .85rem; font-family: var(--font-display); font-size: 1rem; color: #fff; opacity: 0; transform: translateY(8px); transition: all .5s cubic-bezier(.22,1,.36,1); }
-.newcakes__swiper .swiper-slide-active .newcakes__name { opacity: 1; transform: translateY(0); }
+.newcakes__swiper { width: 100%; padding-bottom: 3.5rem !important; }
+.newcakes__slide { text-align: center; }
+.newcakes__cake-wrap { display: inline-block; border-radius: var(--radius); background: hsla(350,50%,60%,.12); padding: 1.5rem; transition: var(--transition); }
+.newcakes__swiper .swiper-slide-active .newcakes__cake-wrap { background: hsla(350,65%,58%,.22); transform: scale(1.05); }
+.newcakes__cake { width: 150px; height: 150px; object-fit: contain; margin-inline: auto; }
+.newcakes__name { margin-top: .85rem; font-family: var(--font-display); font-size: 1rem; color: #fff; opacity: 0; transition: opacity .4s; }
+.newcakes__swiper .swiper-slide-active .newcakes__name { opacity: 1; }
 .swiper-pagination-bullet { background: #fff !important; opacity: .35; }
 .swiper-pagination-bullet-active { opacity: 1 !important; }
 .newcakes__swiper .swiper-pagination { bottom: 8px !important; }
 .newcakes .swiper-button-prev,
-.newcakes .swiper-button-next { top: 50%; transform: translateY(-50%); width: 38px; height: 38px; background: hsla(255,100%,100%,.1); border-radius: 50%; color: #fff; backdrop-filter: blur(4px); }
+.newcakes .swiper-button-next { top: 50%; transform: translateY(-50%); width: 38px; height: 38px; background: hsla(255,100%,100%,.1); border-radius: 50%; color: #fff; }
 .newcakes .swiper-button-prev { left: 8px; }
 .newcakes .swiper-button-next { right: 8px; }
 .newcakes .swiper-button-prev:hover,
 .newcakes .swiper-button-next:hover { background: var(--rose); }
 .newcakes .swiper-button-prev::after,
-.newcakes .swiper-button-next::after { font-size: 1rem; }
+.newcakes .swiper-button-next::after { font-size: .9rem; }
 
 @media (min-width: 640px) {
   .newcakes__cake { width: 180px; height: 180px; }
