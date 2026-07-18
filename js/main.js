@@ -575,7 +575,6 @@ function closeCart() {
 document.getElementById('cart-toggle').addEventListener('click', openCart);
 document.getElementById('cart-close').addEventListener('click', closeCart);
 cartOverlay.addEventListener('click', closeCart);
-document.getElementById('cart-checkout').addEventListener('click', openCheckout);
 document.getElementById('cart-clear').addEventListener('click', clearCart);
 
 /* =============== MOBILE NAV =============== */

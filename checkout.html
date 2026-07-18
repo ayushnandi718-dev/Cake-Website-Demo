@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Delizia Bakery</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body class="checkout-body">
+
+  <!-- HEADER -->
+  <header class="checkout-header">
+    <a href="index.html" class="nav__logo">
+      <i class="ri-cake-3-line" aria-hidden="true"></i> DELIZIA
+    </a>
+    <a href="index.html" class="checkout-header__back">
+      <i class="ri-arrow-left-line"></i> Back to Shop
+    </a>
+  </header>
+
+  <!-- STEP INDICATOR -->
+  <div class="co-steps" id="co-steps">
+    <div class="co-step co-step--active" data-step="1">
+      <div class="co-step__num">1</div>
+      <span class="co-step__label">Summary</span>
+    </div>
+    <div class="co-step__line"></div>
+    <div class="co-step" data-step="2">
+      <div class="co-step__num">2</div>
+      <span class="co-step__label">Delivery</span>
+    </div>
+    <div class="co-step__line"></div>
+    <div class="co-step" data-step="3">
+      <div class="co-step__num">3</div>
+      <span class="co-step__label">Payment</span>
+    </div>
+  </div>
+
+  <main class="co-main container">
+
+    <!-- EMPTY CART MESSAGE -->
+    <div class="co-empty" id="co-empty" style="display:none">
+      <i class="ri-shopping-bag-3-line"></i>
+      <h2>Your cart is empty</h2>
+      <p>Add some cakes before checking out.</p>
+      <a href="index.html" class="btn btn-primary"><i class="ri-arrow-left-line"></i> Browse Cakes</a>
+    </div>
+
+    <!-- STEP 1: ORDER SUMMARY -->
+    <div class="co-section" id="co-section-1">
+      <div class="co-grid">
+        <div class="co-items-card">
+          <h2 class="co-card-title"><i class="ri-shopping-bag-3-line"></i> Your Order</h2>
+          <div class="co-items" id="co-items"></div>
+        </div>
+        <div class="co-summary-card">
+          <h2 class="co-card-title"><i class="ri-file-list-3-line"></i> Order Summary</h2>
+          <div class="co-summary" id="co-summary"></div>
+          <button class="btn btn-primary co-btn" id="co-next-1">
+            Continue to Delivery <i class="ri-arrow-right-line"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: DELIVERY -->
+    <div class="co-section" id="co-section-2" style="display:none">
+      <div class="co-grid">
+        <div class="co-form-card">
+          <h2 class="co-card-title"><i class="ri-truck-line"></i> Delivery Details</h2>
+          <form id="co-delivery-form" class="co-form" novalidate>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="co-fname">First Name *</label>
+                <input class="form__input" id="co-fname" type="text" placeholder="Maria" autocomplete="given-name" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="co-lname">Last Name *</label>
+                <input class="form__input" id="co-lname" type="text" placeholder="Garcia" autocomplete="family-name" required>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="co-email">Email *</label>
+              <input class="form__input" id="co-email" type="email" placeholder="maria@email.com" autocomplete="email" required>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="co-phone">Phone *</label>
+              <input class="form__input" id="co-phone" type="tel" placeholder="+1 234 567 890" autocomplete="tel" required>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="co-address">Delivery Address *</label>
+              <input class="form__input" id="co-address" type="text" placeholder="123 Main St, City" autocomplete="street-address" required>
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="co-date">Delivery Date *</label>
+                <input class="form__input" id="co-date" type="date" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="co-time">Preferred Time</label>
+                <select class="form__select" id="co-time">
+                  <option value="">Any time</option>
+                  <option>Morning (9am–12pm)</option>
+                  <option>Afternoon (12pm–4pm)</option>
+                  <option>Evening (4pm–8pm)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="co-notes">Special Instructions</label>
+              <textarea class="form__textarea" id="co-notes" placeholder="Allergies, special requests, inscription text…"></textarea>
+            </div>
+          </form>
+          <div class="co-btns">
+            <button class="btn btn-outline" id="co-back-2"><i class="ri-arrow-left-line"></i> Back</button>
+            <button class="btn btn-primary" id="co-next-2">Continue to Payment <i class="ri-arrow-right-line"></i></button>
+          </div>
+        </div>
+        <div class="co-summary-card">
+          <h2 class="co-card-title"><i class="ri-file-list-3-line"></i> Order Summary</h2>
+          <div class="co-summary" id="co-summary-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3: PAYMENT -->
+    <div class="co-section" id="co-section-3" style="display:none">
+      <div class="co-grid">
+        <div class="co-form-card">
+          <h2 class="co-card-title"><i class="ri-secure-payment-line"></i> Payment</h2>
+          <div class="co-payment-note">
+            <i class="ri-shield-check-line"></i>
+            <span>This is a demo — no real payment will be processed.</span>
+          </div>
+          <form id="co-payment-form" class="co-form" novalidate>
+            <div class="form__group">
+              <label class="form__label" for="co-card">Card Number *</label>
+              <input class="form__input" id="co-card" type="text" placeholder="4242 4242 4242 4242" maxlength="19" inputmode="numeric" required>
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="co-expiry">Expiry *</label>
+                <input class="form__input" id="co-expiry" type="text" placeholder="MM / YY" maxlength="7" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="co-cvv">CVV *</label>
+                <input class="form__input" id="co-cvv" type="text" placeholder="123" maxlength="4" inputmode="numeric" required>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="co-holder">Name on Card *</label>
+              <input class="form__input" id="co-holder" type="text" placeholder="Maria Garcia" autocomplete="cc-name" required>
+            </div>
+          </form>
+          <div class="co-btns">
+            <button class="btn btn-outline" id="co-back-3"><i class="ri-arrow-left-line"></i> Back</button>
+            <button class="btn btn-primary" id="co-place-order"><i class="ri-lock-line"></i> Place Order</button>
+          </div>
+        </div>
+        <div class="co-summary-card">
+          <h2 class="co-card-title"><i class="ri-file-list-3-line"></i> Order Summary</h2>
+          <div class="co-summary" id="co-summary-3"></div>
+          <div class="co-total" id="co-total"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: SUCCESS -->
+    <div class="co-section co-success" id="co-section-4" style="display:none">
+      <div class="co-success__icon">🎂</div>
+      <h2 class="co-success__title">Order Placed Successfully!</h2>
+      <p class="co-success__msg">
+        Thank you! Your order <strong id="co-order-id"></strong> has been received.
+        We'll contact you within 2 hours to confirm delivery details.
+      </p>
+      <div class="co-success__summary" id="co-success-summary"></div>
+      <a href="index.html" class="btn btn-primary"><i class="ri-home-line"></i> Continue Shopping</a>
+    </div>
+
+  </main>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <i class="ri-checkbox-circle-line" aria-hidden="true"></i>
+    <span id="toast-msg"></span>
+  </div>
+
+  <script src="js/checkout.js"></script>
+</body>
+</html>
