@@ -66,6 +66,9 @@
 .co-success__summary { background: var(--rose-pale); border-radius: var(--radius-sm); padding: 1rem 1.2rem; margin-bottom: 1.5rem; text-align: left; display: flex; flex-direction: column; gap: .4rem; }
 .co-success__detail { display: flex; align-items: center; gap: .5rem; font-size: .86rem; color: var(--text); }
 .co-success__detail i { color: var(--rose); flex-shrink: 0; }
+.co-success__items { margin-top: .5rem; padding-top: .5rem; border-top: 1px dashed hsla(350,20%,70%,.4); display: flex; flex-direction: column; gap: .25rem; }
+.co-success__items strong { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-mid); margin-bottom: .15rem; }
+.co-success__cake { font-size: .84rem; color: var(--text); padding-left: .3rem; }
 .co-success__contact { background: var(--white); border: 1.5px solid var(--cream-dark); border-radius: var(--radius-sm); padding: 1.25rem; margin-bottom: 1.5rem; }
 .co-success__contact-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; margin-bottom: .85rem; text-align: center; }
 .co-success__contact-btns { display: flex; gap: .75rem; flex-wrap: wrap; }

@@ -187,12 +187,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const total = getTotal().toFixed(2);
 
       document.getElementById('co-success-summary').innerHTML = `
+        <div class="co-success__detail"><i class="ri-file-list-3-line"></i> Order <strong>#${orderId}</strong></div>
         <div class="co-success__detail"><i class="ri-user-line"></i> ${fname} ${lname}</div>
         <div class="co-success__detail"><i class="ri-mail-line"></i> ${email}</div>
         <div class="co-success__detail"><i class="ri-phone-line"></i> ${phone}</div>
         <div class="co-success__detail"><i class="ri-calendar-line"></i> Delivery: ${date} (${time})</div>
         <div class="co-success__detail"><i class="ri-map-pin-line"></i> ${address}</div>
         <div class="co-success__detail"><i class="ri-money-dollar-circle-line"></i> Total: $${total}</div>
+        <div class="co-success__items"><strong>Your Cakes:</strong>
+          ${cart.map(i => `<span class="co-success__cake">${i.name} x${i.qty} — $${(i.price * i.qty).toFixed(2)}</span>`).join('')}
+        </div>
       `;
 
       /* ---- Email (mailto → Gmail) ---- */
