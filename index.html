@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Pacifico&display=swap" rel="stylesheet">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -66,12 +66,12 @@
       </div>
     </div>
     <div class="cart-footer" id="cart-footer" style="display:none">
-      <div class="cart-total">
-        <span>Total</span>
-        <strong id="cart-total">$0.00</strong>
-      </div>
+      <div class="cart-total" id="cart-total"></div>
       <button class="btn btn-primary cart-checkout" id="cart-checkout">
         <i class="ri-secure-payment-line"></i> Checkout
+      </button>
+      <button class="btn btn-outline cart-clear-btn" id="cart-clear" type="button">
+        <i class="ri-delete-bin-line"></i> Clear Cart
       </button>
     </div>
   </aside>
@@ -117,10 +117,10 @@
             <div class="hero__swiper-wrap">
               <div class="hero__swiper swiper">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide"><img src="home-cake-1.png" alt="" class="hero__cake-img" loading="eager"></div>
-                  <div class="swiper-slide"><img src="home-cake-2.png" alt="" class="hero__cake-img" loading="lazy"></div>
-                  <div class="swiper-slide"><img src="home-cake-3.png" alt="" class="hero__cake-img" loading="lazy"></div>
-                  <div class="swiper-slide"><img src="home-cake-4.png" alt="" class="hero__cake-img" loading="lazy"></div>
+                  <div class="swiper-slide"><img src="assets/home/home-cake-1.png" alt="" class="hero__cake-img" loading="eager"></div>
+                  <div class="swiper-slide"><img src="assets/home/home-cake-2.png" alt="" class="hero__cake-img" loading="lazy"></div>
+                  <div class="swiper-slide"><img src="assets/home/home-cake-3.png" alt="" class="hero__cake-img" loading="lazy"></div>
+                  <div class="swiper-slide"><img src="assets/home/home-cake-4.png" alt="" class="hero__cake-img" loading="lazy"></div>
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@
     <section class="about section" id="about" aria-labelledby="about-title">
       <div class="about__container container">
         <div class="about__img-wrap" data-reveal-left>
-          <img src="about-img.png" alt="Baker decorating a custom cake in our kitchen" class="about__img" loading="lazy">
+          <img src="assets/about/about-img.png" alt="Baker decorating a custom cake in our kitchen" class="about__img" loading="lazy">
           <div class="about__img-overlay" aria-hidden="true"></div>
           <div class="about__img-badge">
             <strong>12+</strong>
@@ -241,7 +241,7 @@
             <div class="swiper-slide newcakes__slide">
               <div class="newcakes__cake-wrap">
                 <img
-                  src="new-cake-1.png"
+                  src="assets/new-cakes/new-cake-1.png"
                   alt="Premium Chocolate Cake"
                   class="newcakes__cake"
                   loading="lazy"
@@ -257,7 +257,7 @@
             <div class="swiper-slide newcakes__slide">
               <div class="newcakes__cake-wrap">
                 <img
-                  src="new-cake-2.png"
+                  src="assets/new-cakes/new-cake-2.png"
                   alt="Premium Vanilla Cloud Cake"
                   class="newcakes__cake"
                   loading="lazy"
@@ -273,7 +273,7 @@
             <div class="swiper-slide newcakes__slide">
               <div class="newcakes__cake-wrap">
                 <img
-                  src="new-cake-3.png"
+                  src="assets/new-cakes/new-cake-3.png"
                   alt="Premium Cherry Blossom Cake"
                   class="newcakes__cake"
                   loading="lazy"
@@ -289,7 +289,7 @@
             <div class="swiper-slide newcakes__slide">
               <div class="newcakes__cake-wrap">
                 <img
-                  src="new-cake-4.png"
+                  src="assets/new-cakes/new-cake-4.png"
                   alt="Premium Blueberry Delight Cake"
                   class="newcakes__cake"
                   loading="lazy"
@@ -305,7 +305,7 @@
             <div class="swiper-slide newcakes__slide">
               <div class="newcakes__cake-wrap">
                 <img
-                  src="new-cake-5.png"
+                  src="assets/new-cakes/new-cake-5.png"
                   alt="Premium Raspberry Cake"
                   class="newcakes__cake"
                   loading="lazy"
@@ -510,7 +510,7 @@
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
   <!-- Custom JS -->
-  <script src="main.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 </html>
