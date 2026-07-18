@@ -252,7 +252,17 @@ function downloadOrderPDF(order) {
   doc.setTextColor(120);
   doc.text('Computer-generated receipt - no signature required.', pageW / 2, footerY, { align: 'center' });
 
-  doc.save(`Delizia-Receipt-${order.id}.pdf`);
+  try {
+    const blob = doc.output('blob');
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Delizia-Receipt-${order.id}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  } catch(e) { console.error(e); showToast('Failed to generate PDF'); }
 }
 
 // Init

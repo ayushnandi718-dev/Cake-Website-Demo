@@ -255,6 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       /* ---- PDF Receipt ---- */
       document.getElementById('co-download-receipt').addEventListener('click', () => {
+        try {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
         const pageW = doc.internal.pageSize.getWidth();
@@ -368,8 +369,17 @@ document.addEventListener('DOMContentLoaded', () => {
         doc.text('This is a computer-generated receipt. No signature required.', pageW / 2, 280, { align: 'center' });
         doc.text('Thank you for ordering from Delizia Bakery!', pageW / 2, 285, { align: 'center' });
 
-        doc.save(`Delizia-Receipt-${orderId}.pdf`);
+        const blob = doc.output('blob');
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Delizia-Receipt-${orderId}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
         showToast('Receipt downloaded!');
+        } catch(e) { console.error(e); showToast('Failed to generate PDF'); }
       });
     }, 2000);
   });
